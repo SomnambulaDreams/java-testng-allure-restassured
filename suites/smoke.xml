@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Smoke testing">
+    <listeners>
+        <listener class-name="utils.listener.RetryListener"/>
+    </listeners>
+
+    <suite-files>
+        <suite-file path="player/create/player_create_positive.xml"/>
+        <suite-file path="player/get/player_get_positive.xml"/>
+        <!--        <suite-file path="player/delete/player_delete_positive.xml"/>-->
+<!--        <suite-file path="player/update/player_update_positive.xml"/>-->
+    </suite-files>
+</suite>
