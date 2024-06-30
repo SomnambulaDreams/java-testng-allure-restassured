@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Regression testing" parallel="tests" thread-count="4">
+<suite name="Regression testing" parallel="classes">
     <listeners>
         <listener class-name="utils.listener.RetryListener"/>
     </listeners>
@@ -11,9 +11,11 @@
         <suite-file path="player/create/player_create_positive.xml"/>
         <suite-file path="player/get/player_get_positive.xml"/>
         <suite-file path="player/get/player_get_negative.xml"/>
-        <!--        <suite-file path="./player/delete/player_delete_positive.xml"/>-->
-        <!--        <suite-file path="./player/delete/player_delete_negative.xml"/>-->
-<!--        <suite-file path="./player/update/player_update_positive.xml"/>-->
-<!--        <suite-file path="./player/update/player_update_negative.xml"/>-->
+        <suite-file path="player/get_all/player_get_all_positive.xml"/>
+        <suite-file path="player/get_all/player_get_all_negative.xml"/>
+        <suite-file path="player/delete/player_delete_positive.xml"/>
+        <suite-file path="player/delete/player_delete_negative.xml"/>
+        <suite-file path="player/update/player_update_positive.xml"/>
+        <suite-file path="player/update/player_update_negative.xml"/>
     </suite-files>
 </suite>

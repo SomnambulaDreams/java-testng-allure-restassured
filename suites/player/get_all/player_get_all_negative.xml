@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Player controller, get all endpoint - negative tests">
+
+    <test name="Get all players - negative" parallel="methods" thread-count="4">
+        <classes>
+            <class name="tests.player_get_all.GetAllPlayersNegativeTests"/>
+        </classes>
+    </test>
+</suite>

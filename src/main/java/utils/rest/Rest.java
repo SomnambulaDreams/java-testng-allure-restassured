@@ -34,6 +34,9 @@ public class Rest {
         throw new RuntimeException("Pay attention! You are trying to use incorrect Request Method");
     }
 
+    public String getBaseUrl() {
+        return baseUrl;
+    }
 
     public static class Builder {
 

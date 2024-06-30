@@ -31,14 +31,8 @@ public class CreatePlayerNegativeTests extends CreatePlayerTestData {
     public void validateNegativeBusinessCases(String testCase, List<RestParameter> pathParams, List<RestParameter> queryParams) {
         logger.info("Case: " + testCase);
 
-        Response response = new Rest
-                .Builder(baseUrl, endpoint, method)
-                .listeners(new AllureRestAssured(), new RestAssuredListener())
-                .headers(headers)
-                .pathParams(pathParams)
-                .queryParams(queryParams)
-                .build()
-                .executeRequest();
+        Response response = createPlayer(pathParams, queryParams);
+
         assertNotEquals(response.getStatusCode(), 200);
     }
 
@@ -86,25 +80,10 @@ public class CreatePlayerNegativeTests extends CreatePlayerTestData {
     public void validateResponseCodeWhenTwoUsersCreatedWithTheSameLogin(String testCase, List<RestParameter> pathParams, List<RestParameter> queryParams) {
         logger.info("Case: " + testCase + " users with the same login.");
 
-        Response response1 = new Rest
-                .Builder(baseUrl, endpoint, method)
-                .listeners(new AllureRestAssured(), new RestAssuredListener())
-                .headers(headers)
-                .pathParams(pathParams)
-                .queryParams(queryParams)
-                .build()
-                .executeRequest();
+        Response response1 = createPlayer(pathParams, queryParams);
 
         List<RestParameter> updatedQueryParams = updateListItem("screenName", DataGenerator.getRandomString("10 Latin characters"), queryParams);
-
-        Response response2 = new Rest
-                .Builder(baseUrl, endpoint, method)
-                .listeners(new AllureRestAssured(), new RestAssuredListener())
-                .headers(headers)
-                .pathParams(pathParams)
-                .queryParams(updatedQueryParams)
-                .build()
-                .executeRequest();
+        Response response2 = createPlayer(pathParams, updatedQueryParams);
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(response1.getStatusCode(), 200);
@@ -119,25 +98,10 @@ public class CreatePlayerNegativeTests extends CreatePlayerTestData {
     public void validateResponseCodeWhenTwoUsersCreatedWithTheSameScreenName(String testCase, List<RestParameter> pathParams, List<RestParameter> queryParams) {
         logger.info("Case: " + testCase + " users with the same screenName");
 
-        Response response1 = new Rest
-                .Builder(baseUrl, endpoint, method)
-                .listeners(new AllureRestAssured(), new RestAssuredListener())
-                .headers(headers)
-                .pathParams(pathParams)
-                .queryParams(queryParams)
-                .build()
-                .executeRequest();
+        Response response1 = createPlayer(pathParams, queryParams);
 
         List<RestParameter> updatedQueryParams = updateListItem("login", DataGenerator.getRandomString("10 Latin characters"), queryParams);
-
-        Response response2 = new Rest
-                .Builder(baseUrl, endpoint, method)
-                .listeners(new AllureRestAssured(), new RestAssuredListener())
-                .headers(headers)
-                .pathParams(pathParams)
-                .queryParams(updatedQueryParams)
-                .build()
-                .executeRequest();
+        Response response2 = createPlayer(pathParams, updatedQueryParams);
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(response1.getStatusCode(), 200);

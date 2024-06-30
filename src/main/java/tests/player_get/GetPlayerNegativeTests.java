@@ -2,11 +2,8 @@ package tests.player_get;
 
 import domain.requests.GetPlayerRequest;
 import io.qameta.allure.*;
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
-import utils.listener.RestAssuredListener;
-import utils.rest.Rest;
 
 import java.util.logging.Logger;
 
@@ -28,15 +25,5 @@ public class GetPlayerNegativeTests extends GetPlayerTestData {
         logger.info("Case: " + testCase);
         Response response = getExistingPlayer(request);
         assertEquals(response.getStatusCode(), 400);
-    }
-
-    private Response getExistingPlayer(GetPlayerRequest request) {
-        return new Rest
-                .Builder(baseUrl, endpoint, method)
-                .listeners(new AllureRestAssured(), new RestAssuredListener())
-                .headers(headers)
-                .body(request.toJson())
-                .build()
-                .executeRequest();
     }
 }

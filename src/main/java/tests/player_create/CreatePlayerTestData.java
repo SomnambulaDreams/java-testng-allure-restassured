@@ -5,34 +5,33 @@ import tests.BaseTest;
 import utils.data.ExcelReader;
 import utils.rest.RestMethod;
 
-import java.io.InputStream;
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
 
 public class CreatePlayerTestData extends BaseTest {
 
-    private static final String filepath = testConfig.playerCreateFilepath();
-    private static final InputStream inputStream = CreatePlayerTestData.class.getClassLoader().getResourceAsStream(filepath);
-    private static final ExcelReader testData = new ExcelReader(inputStream);
+    private static final String filepath = System.getProperty("user.dir") + File.separator + testConfig.playerCreateFilepath();
+    private static final ExcelReader testData = new ExcelReader(filepath);
 
     protected static String endpoint = endpoint();
     protected static RestMethod method = method();
 
 
-    @DataProvider(name = "create player - positive")
+    @DataProvider(name = "create player - positive", parallel = true)
     public Object[][] testDataForPositiveTests() {
         String sheetName = testConfig.sheetPositive();
         return prepareDataForCreatingPlayer(testData, sheetName);
     }
 
-    @DataProvider(name = "create player - negative")
+    @DataProvider(name = "create player - negative", parallel = true)
     public Object[][] testDataForNegativeTests() {
         String sheetName = testConfig.sheetNegative();
         return prepareDataForCreatingPlayer(testData, sheetName);
     }
 
-    @DataProvider(name = "create player - combo of positive data and incorrect rest methods")
+    @DataProvider(name = "create player - combo of positive data and incorrect rest methods", parallel = true)
     public Object[] incorrectRestMethods() {
         Object[][] positive = testDataForPositiveTests();
         Object[] incorrectRestMethods = RestMethod.getValuesExcept(method).toArray();

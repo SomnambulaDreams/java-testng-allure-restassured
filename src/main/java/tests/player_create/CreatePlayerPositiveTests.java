@@ -1,11 +1,8 @@
 package tests.player_create;
 
 import io.qameta.allure.*;
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import utils.listener.RestAssuredListener;
 import org.testng.annotations.Test;
-import utils.rest.Rest;
 import utils.rest.RestParameter;
 
 import java.util.List;
@@ -32,14 +29,8 @@ public class CreatePlayerPositiveTests extends CreatePlayerTestData {
     public void validatePositiveBusinessCases(String testCase, List<RestParameter> pathParams, List<RestParameter> queryParams) {
         logger.info("Case: " + testCase);
 
-        Response response = new Rest
-                .Builder(baseUrl, endpoint, method)
-                .listeners(new AllureRestAssured(), new RestAssuredListener())
-                .headers(headers)
-                .pathParams(pathParams)
-                .queryParams(queryParams)
-                .build()
-                .executeRequest();
+        Response response = createPlayer(pathParams, queryParams);
+
         assertEquals(response.getStatusCode(), 200);
     }
 }

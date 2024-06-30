@@ -12,14 +12,15 @@ public class TestConfig extends Config {
 
     private enum Key {
 
-        PLAYER_CREATE_FILEPATH  ("player.create.filepath"),
-        PLAYER_GET_FILEPATH     ("player.get.filepath"),
-        PLAYER_GET_ALL_FILEPATH ("player.get.all.filepath"),
-        PLAYER_UPDATE_FILEPATH  ("player.update.filepath"),
-        PLAYER_DELETE_FILEPATH  ("player.delete.filepath"),
-        SHEET_ENDPOINT          ("sheet.endpoint"),
-        SHEET_POSITIVE          ("sheet.positive"),
-        SHEET_NEGATIVE          ("sheet.negative");
+        PLAYER_CREATE_FILEPATH          ("player.create.filepath"),
+        PLAYER_GET_FILEPATH             ("player.get.filepath"),
+        PLAYER_GET_ALL_FILEPATH         ("player.get.all.filepath"),
+        PLAYER_UPDATE_FILEPATH          ("player.update.filepath"),
+        PLAYER_DELETE_FILEPATH          ("player.delete.filepath"),
+        SHEET_ENDPOINT                  ("sheet.endpoint"),
+        SHEET_POSITIVE                  ("sheet.positive"),
+        SHEET_NEGATIVE                  ("sheet.negative"),
+        SHEET_POSITIVE_SUPERVISOR_OWN   ("sheet.positive.supervisor.own");
 
         public final String field;
 
@@ -42,6 +43,18 @@ public class TestConfig extends Config {
         return properties.getProperty(Key.PLAYER_GET_FILEPATH.field);
     }
 
+    public String playerGetAllFilepath() {
+        return properties.getProperty(Key.PLAYER_GET_ALL_FILEPATH.field);
+    }
+
+    public String playerUpdateFilepath() {
+        return properties.getProperty(Key.PLAYER_UPDATE_FILEPATH.field);
+    }
+
+    public String playerDeleteFilepath() {
+        return properties.getProperty(Key.PLAYER_DELETE_FILEPATH.field);
+    }
+
     public String sheetEndpoint() {
         return properties.getProperty(Key.SHEET_ENDPOINT.field);
     }
@@ -52,6 +65,10 @@ public class TestConfig extends Config {
 
     public String sheetNegative() {
         return properties.getProperty(Key.SHEET_NEGATIVE.field);
+    }
+
+    public String sheetPositiveSupervisorOwn() {
+        return properties.getProperty(Key.SHEET_POSITIVE_SUPERVISOR_OWN.field);
     }
 
 

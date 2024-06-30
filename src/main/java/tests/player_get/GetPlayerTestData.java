@@ -8,16 +8,15 @@ import utils.data.ExcelReader;
 import utils.rest.RestMethod;
 import utils.rest.RestParameter;
 
-import java.io.InputStream;
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
 
 public class GetPlayerTestData extends BaseTest {
 
-    private static final String filepath = testConfig.playerGetFilepath();
-    private static final InputStream inputStream = GetPlayerTestData.class.getClassLoader().getResourceAsStream(filepath);
-    private static final ExcelReader testData = new ExcelReader(inputStream);
+    private static final String filepath = System.getProperty("user.dir") + File.separator + testConfig.playerGetFilepath();
+    private static final ExcelReader testData = new ExcelReader(filepath);
 
     protected static String endpoint = endpoint();
     protected static RestMethod method = method();
@@ -27,7 +26,7 @@ public class GetPlayerTestData extends BaseTest {
         headers.add(new RestParameter("Content-Type", "application/json"));
     }
 
-    @DataProvider(name = "get player - initial users")
+    @DataProvider(name = "get player - initial users", parallel = true)
     public Object[][] getInitialUsersIds() {
         Object[][] result = new Object[2][2];
         result[0][0] = "Get initial user: supervisor [id = 1]";
@@ -37,7 +36,7 @@ public class GetPlayerTestData extends BaseTest {
         return result;
     }
 
-    @DataProvider(name = "get player - incorrect request body")
+    @DataProvider(name = "get player - incorrect request body", parallel = true)
     public Object[][] getIncorrectRequestBody() {
         Object[][] result = new Object[7][2];
         result[0][0] = "PlayerId ignored";
@@ -57,7 +56,7 @@ public class GetPlayerTestData extends BaseTest {
         return result;
     }
 
-    @DataProvider(name = "get player - data for creating a user")
+    @DataProvider(name = "get player - data for creating a user", parallel = true)
     public Object[][] getUsersDataForCreation() {
         String sheetName = testConfig.sheetPositive();
         return prepareDataForCreatingPlayer(testData, sheetName);
