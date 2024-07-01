@@ -36,6 +36,7 @@ The testing data stored in xlsx-files, so can be updated by non-tech specialists
 ### TestNG configuration
 TestNG configuration contains following parameters:
 * suite - suite name for execution
+* parallel - parallel mode
 * thread.count - count of threads for parallel execution
 * data.provider.thread.count - count of threads for parallel execution of data providers
 * max.retry - number of retries for failed tests
