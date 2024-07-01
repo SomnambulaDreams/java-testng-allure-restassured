@@ -46,7 +46,7 @@ public class TestRunner {
                 logger.info(String.format("Suite %s added to execution", suite));
                 break;
             default:
-                throw new RuntimeException("Unexpected value: " + suite + ".\nPlease check 'suite' field in 'suite.properties' file.");
+                throw new RuntimeException("Unexpected value: " + suite + ".\nPlease check 'suite' field in 'testng.properties' file.");
         }
         return suites;
     }
