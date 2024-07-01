@@ -6,7 +6,6 @@ import tests.BaseTest;
 import utils.data.DataGenerator;
 import utils.data.ExcelReader;
 import utils.rest.RestMethod;
-import utils.rest.RestParameter;
 
 import java.io.File;
 import java.util.List;
@@ -20,11 +19,7 @@ public class GetPlayerTestData extends BaseTest {
 
     protected static String endpoint = endpoint();
     protected static RestMethod method = method();
-    protected static List<RestParameter> headers = BaseTest.headers;
 
-    static {
-        headers.add(new RestParameter("Content-Type", "application/json"));
-    }
 
     @DataProvider(name = "get player - initial users", parallel = true)
     public Object[][] getInitialUsersIds() {

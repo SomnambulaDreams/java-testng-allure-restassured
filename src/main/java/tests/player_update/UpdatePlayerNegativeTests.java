@@ -29,15 +29,15 @@ public class UpdatePlayerNegativeTests extends UpdatePlayerTestData {
     @Description("Validate response status code when player doesn't have access to update an another player")
     @Story("Test-23")
     @Severity(SeverityLevel.CRITICAL)
-    public void validateResponseWhenSupervisorDeletesAdminsAccount(String testCase, String passiveUser, String activeUser, UpdatePlayerRequest requestBodyObject) {
+    public void validateResponseWhenSupervisorDeletesAdminsAccount(String testCase, String roleForDeletion, String editorRole, UpdatePlayerRequest requestBodyObject) {
         logger.info("Case: " + testCase);
 
-        String activeUserLogin = getPlayerLogin(activeUser);
-        Long passiveUserId = getPlayerId(passiveUser);
+        String editorLogin = getPlayerLogin(editorRole);
+        Long idForDeletion = getPlayerId(roleForDeletion);
 
         List<RestParameter> pathParams = new LinkedList<>();
-        pathParams.add(new RestParameter("editor", activeUserLogin));
-        pathParams.add(new RestParameter("id", passiveUserId));
+        pathParams.add(new RestParameter("editor", editorLogin));
+        pathParams.add(new RestParameter("id", idForDeletion));
 
         Response response = updatePlayer(pathParams, requestBodyObject);
 

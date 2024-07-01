@@ -1,6 +1,6 @@
 package utils.retry;
 
-import config.SuiteConfig;
+import config.TestNgConfig;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import runner.TestRunner;
@@ -12,7 +12,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 
     private static final Logger logger = Logger.getLogger(TestRunner.class.getName());
 
-    private static final int maxRetries = SuiteConfig.instance().maxRetries();
+    private static final int maxRetries = TestNgConfig.instance().maxRetries();
     private int counter = 1;
 
     @Override

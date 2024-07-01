@@ -1,6 +1,6 @@
 package runner;
 
-import config.SuiteConfig;
+import config.TestNgConfig;
 import org.testng.TestNG;
 
 import java.util.LinkedList;
@@ -11,11 +11,16 @@ import java.util.logging.Logger;
 public class TestRunner {
 
     private static final Logger logger = Logger.getLogger(TestRunner.class.getName());
-    private static final String suite = SuiteConfig.instance().suite();
+    private static final TestNgConfig testNgConfig = TestNgConfig.instance();
+    private static final String suite = testNgConfig.suite();
+    private static final int threadCount = testNgConfig.threadCount();
+    private static final int dataProviderThreadCount = testNgConfig.dataProviderThreadCount();
 
 
     public static void main(String[] args) {
         TestNG testNG = new TestNG();
+        testNG.setThreadCount(threadCount);
+        testNG.setDataProviderThreadCount(dataProviderThreadCount);
         testNG.setTestSuites(suites());
         testNG.run();
     }
@@ -30,6 +35,14 @@ public class TestRunner {
                 break;
             case "regression":
                 suites.add("suites/regression.xml");
+                logger.info(String.format("Suite %s added to execution", suite));
+                break;
+            case "smoke3threads":
+                suites.add("suites/smoke3threads.xml");
+                logger.info(String.format("Suite %s added to execution", suite));
+                break;
+            case "regression3threads":
+                suites.add("suites/regression3threads.xml");
                 logger.info(String.format("Suite %s added to execution", suite));
                 break;
             default:

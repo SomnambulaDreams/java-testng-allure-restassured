@@ -24,11 +24,6 @@ public class UpdatePlayerTestData extends BaseTest {
 
     protected static String endpoint = endpoint();
     protected static RestMethod method = method();
-    protected static List<RestParameter> headers = BaseTest.headers;
-
-    static {
-        headers.add(new RestParameter("Content-Type", "application/json"));
-    }
 
 
     @DataProvider(name = "update player - data for updating supervisors account", parallel = true)

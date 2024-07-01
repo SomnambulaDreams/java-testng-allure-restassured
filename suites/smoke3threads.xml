@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression testing" parallel="methods" thread-count="1" data-provider-thread-count="3">
+    <listeners>
+        <listener class-name="utils.listener.RetryListener"/>
+    </listeners>
+
+    <test name="Create players - positive">
+        <classes>
+            <class name="tests.player_create.CreatePlayerPositiveTests"/>
+        </classes>
+    </test>
+    <test name="Delete player - positive">
+        <classes>
+            <class name="tests.player_delete.DeletePlayerPositiveTests"/>
+        </classes>
+    </test>
+    <test name="Get players - positive">
+        <classes>
+            <class name="tests.player_get.GetPlayerPositiveTests"/>
+        </classes>
+    </test>
+    <test name="Get all players - positive">
+        <classes>
+            <class name="tests.player_get_all.GetAllPlayersPositiveTests"/>
+        </classes>
+    </test>
+    <test name="Update player - positive">
+        <classes>
+            <class name="tests.player_update.UpdatePlayerPositiveTests"/>
+        </classes>
+    </test>
+</suite>

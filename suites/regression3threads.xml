@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression testing" parallel="methods">
+    <listeners>
+        <listener class-name="utils.listener.RetryListener"/>
+    </listeners>
+
+    <test name="Create players - negative">
+        <classes>
+            <class name="tests.player_create.CreatePlayerNegativeTests"/>
+        </classes>
+    </test>
+    <test name="Create players - positive">
+        <classes>
+            <class name="tests.player_create.CreatePlayerPositiveTests"/>
+        </classes>
+    </test>
+    <test name="Delete player - negative">
+        <classes>
+            <class name="tests.player_delete.DeletePlayerNegativeTests"/>
+        </classes>
+    </test>
+    <test name="Delete player - positive">
+        <classes>
+            <class name="tests.player_delete.DeletePlayerPositiveTests"/>
+        </classes>
+    </test>
+    <test name="Get players - negative">
+        <classes>
+            <class name="tests.player_get.GetPlayerNegativeTests"/>
+        </classes>
+    </test>
+    <test name="Get players - positive">
+        <classes>
+            <class name="tests.player_get.GetPlayerPositiveTests"/>
+        </classes>
+    </test>
+    <test name="Get all players - negative">
+        <classes>
+            <class name="tests.player_get_all.GetAllPlayersNegativeTests"/>
+        </classes>
+    </test>
+    <test name="Get all players - positive">
+        <classes>
+            <class name="tests.player_get_all.GetAllPlayersPositiveTests"/>
+        </classes>
+    </test>
+    <test name="Update player - negative">
+        <classes>
+            <class name="tests.player_update.UpdatePlayerNegativeTests"/>
+        </classes>
+    </test>
+    <test name="Update player - positive">
+        <classes>
+            <class name="tests.player_update.UpdatePlayerPositiveTests"/>
+        </classes>
+    </test>
+</suite>
