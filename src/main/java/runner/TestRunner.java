@@ -2,6 +2,7 @@ package runner;
 
 import config.TestNgConfig;
 import org.testng.TestNG;
+import org.testng.xml.XmlSuite;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,10 +16,12 @@ public class TestRunner {
     private static final String suite = testNgConfig.suite();
     private static final int threadCount = testNgConfig.threadCount();
     private static final int dataProviderThreadCount = testNgConfig.dataProviderThreadCount();
+    private static final XmlSuite.ParallelMode parallel = testNgConfig.parallel();
 
 
     public static void main(String[] args) {
         TestNG testNG = new TestNG();
+        testNG.setParallel(parallel);
         testNG.setThreadCount(threadCount);
         testNG.setDataProviderThreadCount(dataProviderThreadCount);
         testNG.setTestSuites(suites());

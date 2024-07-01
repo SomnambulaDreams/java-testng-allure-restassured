@@ -1,5 +1,7 @@
 package config;
 
+import org.testng.xml.XmlSuite;
+
 import java.io.InputStream;
 
 
@@ -13,6 +15,7 @@ public class TestNgConfig extends Config {
     private enum Key {
 
         SUITE                       ("suite"),
+        PARALLEL                    ("parallel"),
         THREAD_COUNT                ("thread.count"),
         DATA_PROVIDER_THREAD_COUNT  ("data.provider.thread.count"),
         MAX_RETRIES                 ("max.retries");
@@ -32,6 +35,14 @@ public class TestNgConfig extends Config {
 
     public String suite() {
         return properties.getProperty(Key.SUITE.field);
+    }
+
+    public XmlSuite.ParallelMode parallel() {
+        String label = properties.getProperty(Key.PARALLEL.field);
+        for(XmlSuite.ParallelMode item : XmlSuite.ParallelMode.values())
+            if (label.equalsIgnoreCase(item.name()))
+                return item;
+        throw new RuntimeException("Pay attention!\nYou are trying to use incorrect 'parallel' value from 'testng.properties' file");
     }
 
     public int threadCount() {
