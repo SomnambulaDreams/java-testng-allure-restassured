@@ -28,10 +28,10 @@ The project implemented based on Data Driven principle extracting testing data f
 The data can be updated and stored separately from testing project and can be used in remote servers or docker images.
 The testing data stored in xlsx-files, so can be updated by non-tech specialists or manual QAs.
 
-### Configuration of the project slitted to 3 files (3 contexts for further CI/CD):
+### Configuration of the project split to 3 files (3 contexts for further CI/CD):
 * **Environment** properties related to base url and other environment data
 * **Test** properties related to testing data
-* **TestNG** properties related to TesNG configuration
+* **TestNG** properties related to TestNG configuration
 
 ### TestNG configuration
 TestNG configuration contains following parameters:
@@ -47,10 +47,11 @@ TestNG configuration contains following parameters:
 * RetryListener - used for implementing retry feature.
 
 ### Parallelism
-Can be provided by 3 items
-1. ThreadCount parameter
-2. DataProviderThreadCount parameter
-3. And by configuring of 2-level suites (see regression.xml testng xml-file), min execution time ~12-14 seconds, by 10 threads. 
+Can be provided by 3 (+1) items
+1. Parallel mode
+2. ThreadCount parameter
+3. DataProviderThreadCount parameter
+4. And by configuring of 2-level suites (see regression.xml testng xml-file), min execution time ~12-14 seconds, by 10 threads. 
 
 ### Executable JAR file
 I use jar with dependencies for copying it in remote PC / docker container and execute it in pipelines of any CI/CD tool.
@@ -72,7 +73,7 @@ Run following command to execute tests from jar-file: \
 
 ![img1.png](images/img1.png)
 
-when you get tests executed run following command to run allure server to see testing report: \
+when you get tests executed, run following command to start allure server and see testing report: \
 `allure serve`
 
 ![img2.png](images/img2.png)
